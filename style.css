@@ -1,0 +1,48 @@
+:root {
+    --background-color: #5eccff;
+    --frame-background-color: rgba(255, 255, 255, 0); /* LightBlue with opacity */
+    --frame-border-color: #000;
+    --frame-font-color: #000;
+    --frame-width: 50px;
+    --frame-height: 50px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.bericht {
+    position: absolute;
+    width: var(--frame-width);
+    height: var(--frame-height);
+    background-color: var(--frame-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: var(--frame-font-color);
+}
+.geen_bericht {
+    position: absolute;
+    width: var(--frame-width);
+    height: var(--frame-height);
+    background-color: var(--frame-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: var(--frame-font-color);
+}
