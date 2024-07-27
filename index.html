@@ -4,48 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overlapping Text Frames</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
-        }
-        .container {
-            position: relative;
-            width: 300px;
-            height: 200px;
-        }
-        .frame {
-            position: absolute;
-            width: 300px;
-            height: 200px;
-            background-color: rgba(173, 216, 230, 0.8); /* LightBlue with opacity */
-            border: 1px solid #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            color: #000;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Generate 100 frames -->
-        <script>
-            for (let i = 0; i < 100; i++) {
-                const frame = document.createElement('div');
-                frame.className = 'frame';
-                frame.style.top = `${i * 2}px`;
-                frame.style.left = `${i * 2}px`;
-                frame.textContent = `Framew ${i + 1}`;
-                document.querySelector('.container').appendChild(frame);
+    <div class="container"></div>
+    <script>
+        const container = document.querySelector('.container');
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ@.';
+        const seed = 10015;  
+        Math.seedrandom(seed);
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        let maxLeft = 0
+    
+        let message = "Er  is  een  levering  op  komst  met  het  laatste  Bericht.  Stuur  een  mail  naar  zoektochtbob@gmail.com  om  te  bevestigen  dat  de  levering  mag  komen";
+        message = message.toUpperCase();
+        const minOffset = 20;
+        const maxOffset = 40;
+
+        function getRandomOffset(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+        let prevTop = 0;
+                 // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+        let prevLeft = 0;
+
+                 // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+        for (let i = 0; i < message.length; i++) {
+            const frame = document.createElement('div');
+            frame.className = 'bericht';
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            frame.textContent = message[i];
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            const randomTopOffset = getRandomOffset(minOffset, maxOffset);
+            const randomLeftOffset = getRandomOffset(minOffset, maxOffset);
+            let newLeft = prevLeft + randomLeftOffset;
+            if(newLeft >= window.innerWidth - 50){
+                 newLeft = randomLeftOffset
+                 prevTop += 60
             }
-        </script>
-    </div>
+                     // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            frame.style.top = `${prevTop + (randomTopOffset/3)}px`;
+
+            frame.style.left = `${newLeft}px`;
+            maxLeft = Math.max(newLeft, maxLeft)
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            prevLeft = newLeft;
+
+            container.appendChild(frame);
+        }
+        for (let i = 0; i < 3000; i++) {
+                     // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            const frame = document.createElement('div');
+            frame.className = 'geen_bericht';
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+            const randomLetter = letters[getRandomInt(letters.length)];
+            frame.textContent = randomLetter;
+
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+            const randomTop = Math.random() * (window.innerHeight - 50);
+                     // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            const randomLeft = Math.random() * (window.innerWidth - 50);
+            frame.style.top = `${randomTop}px`;
+                     // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            frame.style.left = `${randomLeft}px`;
+         // aodzhùoazhdùazihdaùohadoajdbmohdùazhdùoazduhaozùdahdùoadùafbùzefbvùfh ezhofeazùofhazùofhùazof hùzhù azhùfezihfù zihùefo hzùoudh meazoufg â"hry ùohaeùfh ùo fhùozfh iùe
+
+            container.appendChild(frame);
+        }
+
+    </script>
+    
 </body>
 </html>
